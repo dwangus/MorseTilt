@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="description" content="Tilt provides 911 operators with extra information from calls to determine whether the caller has made an accidental call or is in a dangerous situation in which they cannot conventionally respond.">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	    <title>Morse Tilt</title>
+
+	    <link rel="shortcut icon" href="/fav/favicon.ico">
+		<link rel="icon" sizes="16x16 32x32 64x64" href="/fav/favicon.ico">
+		<link rel="icon" type="image/png" sizes="196x196" href="/fav/favicon-192.png">
+		<link rel="icon" type="image/png" sizes="160x160" href="/fav/favicon-160.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/fav/favicon-96.png">
+		<link rel="icon" type="image/png" sizes="64x64" href="/fav/favicon-64.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/fav/favicon-32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/fav/favicon-16.png">
+		<link rel="apple-touch-icon" href="/fav/favicon-57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/fav/favicon-114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/fav/favicon-72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/fav/favicon-144.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/fav/favicon-60.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/fav/favicon-120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/fav/favicon-76.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/fav/favicon-152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/fav/favicon-180.png">
+		<meta name="msapplication-TileColor" content="#FFFFFF">
+		<meta name="msapplication-TileImage" content="/fav/favicon-144.png">
+		<meta name="msapplication-config" content="/fav/browserconfig.xml">
+		
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Audiowide|Ubuntu+Mono" rel="stylesheet">
+		<link rel="stylesheet" href="/css/material.min.css">
+		<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+	    <link rel="stylesheet" href="/css/styles.css">
+	</head>
+	<body class="mdl-color--grey-900 mdl-color-text--grey-100">
+		<div class="mdl-layout mdl-js-layout">
+		  <main class="mdl-layout__content">
+		    <div class="page-content">
+				<h1 class="text-center">Morse Tilt</h1>
+
+				<h3 class="text-center">Recent Tilt Calls</h3>
+				<ul class="demo-list-item mdl-list">
+				  <li class="mdl-list__item mdl-color--grey-800 mdl-color-text--grey-100">
+				    <span class="mdl-list__item-primary-content">
+				      812-562-6455
+				    </span>
+				  </li>
+				</ul>
+		    </div>
+		  </main>
+		</div>
+
+		<dialog class="mdl-dialog mdl-color--grey-900 mdl-color-text--grey-100">
+			<h4 class="mdl-dialog__title">812-562-6455</h4>
+			<div class="mdl-dialog__content mdl-color-text--grey-100">
+			  <p>
+			    Binary data from this number:
+			  </p>
+			  <ul>
+			  	
+			  </ul>
+			</div>
+			<div class="mdl-dialog__actions">
+			  <button type="button" class="mdl-button close mdl-color--grey-800">Close</button>
+			</div>
+		</dialog>
+		
+		<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+		<script src="/js/material.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var dialog = document.querySelector('dialog');
+			var socket = io();
+			var config = {
+				apiKey: "AIzaSyCYC-_poTPNXOHG6Vbt705T4hr83L_ifEk",
+				authDomain: "tilt-58af2.firebaseapp.com",
+				databaseURL: "https://tilt-58af2.firebaseio.com",
+				storageBucket: "tilt-58af2.appspot.com",
+				messagingSenderId: "162556794337"
+			};
+			firebase.initializeApp(config);
+			var database = firebase.database();
+
+			var currentNumber = "812-562-6455";
+
+			socket.on("log", function(msg) {
+				console.log(msg);
+			});
+
+			socket.on('updatedata', function(){
+				database.ref('/phones/' + currentNumber + '/messages').once('value').then(function(snapshot) {
+				  var messages = snapshot.val();
+				  var keys = Object.keys(messages);
+				  var ul = dialog.querySelector("ul");
+				  ul.innerHTML = '';
+				  if (keys.length > 30) {
+				  	database.ref('/phones/' + currentNumber + '/messages').orderByKey().limitToFirst(1).set(null);
+				  }
+			  	  for (var i = 0; i < keys.length; i++) {
+					var li = document.createElement("li");
+					li.appendChild(document.createTextNode(keys[i] + ": " + messages[keys[i]]));
+					ul.appendChild(li);	
+				  }
+				});
+			});
+
+			var listitems = document.querySelectorAll('.mdl-list__item');
+			for (var i = 0; i < listitems.length; i++) {
+				listitems[i].addEventListener('click', function(){
+					dialog.showModal();
+				});
+			}
+			dialog.querySelector('.close').addEventListener('click', function() {
+		      dialog.close();
+		    });
+		</script>
+	</body>
+</html>
