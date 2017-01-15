@@ -1,0 +1,40 @@
+body, html, .mdl-dialog__content {
+	font-size: 16px;
+}
+
+.demo-list-item {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.mdl-layout__drawer-button {
+	color: red;
+}
+
+.mdl-layout__content {
+	margin-top: 48px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.mdl-list__item {
+	cursor: pointer;
+}
+
+.mdl-dialog {
+    width: 350px !important;
+}
+
+h1 {
+	font-family: 'Audiowide', sans-serif;
+}
+
+h3, h4 {
+	font-family: 'Ubuntu Mono', monospace;
+}
+
+.mdl-list__item-primary-content, dialog>* {
+	font-family: 'Ubuntu Mono', monospace;
+}
