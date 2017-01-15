@@ -5,7 +5,6 @@ var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 
 var admin = require("firebase-admin");
-//var serviceAccount = require("/credentials.json");
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -52,7 +51,6 @@ app.post('/updatedata', function(req, res) {
       if (err) {
         console.error(err);
       } else {
-        //io.emit('log', req.body);
         io.emit('updatedata');
       }
     });
