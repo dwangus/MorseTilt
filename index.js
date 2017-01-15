@@ -48,14 +48,14 @@ app.post('/updatedata', function(req, res) {
     } else {
       req.body.orientation = 0;
     }
-    /*messageRef.set(req.body.orientation, function(err) {
+    messageRef.set(req.body.orientation, function(err) {
       if (err) {
         console.error(err);
       } else {
         //io.emit('log', req.body);
         io.emit('updatedata');
       }
-    });*/
+    });
 
     io.emit('updatedata');
 });
