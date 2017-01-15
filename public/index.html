@@ -95,9 +95,9 @@
 				  var keys = Object.keys(messages);
 				  var ul = dialog.querySelector("ul");
 				  ul.innerHTML = '';
-				  if (keys.length > 30) {
+				  /*if (keys.length > 30) {
 				  	database.ref('/phones/' + currentNumber + '/messages').orderByKey().limitToFirst(1).set(null);
-				  }
+				  }*/
 			  	  for (var i = 0; i < keys.length; i++) {
 					var li = document.createElement("li");
 					li.appendChild(document.createTextNode(keys[i] + ": " + messages[keys[i]]));
