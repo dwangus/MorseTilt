@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dwangus.gai.morsetilt">
+
+    <!--
+    So basically:
+        - BootReceiver starts up BootService on device boot
+        - BootService sets up a BroadcastReceiver (anonymous class)
+        - BroadcastReceiver waits to detect a phone call
+    -->
+
+    <!-- //http://stackoverflow.com/questions/40495868/how-to-perform-action-on-a-specific-number-dial-in-android -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:debuggable="true">
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- http://stackoverflow.com/questions/10428510/how-to-start-launch-application-at-boot-time-android -->
+        <receiver android:name=".BootReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- http://stackoverflow.com/questions/24307412/android-application-as-a-service-without-activity
+        ???
+        -->
+        <service android:name=".BootService">
+        </service>
+
+        <receiver android:name=".Outgoing" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="xyz" />
+                <action android:name="abc" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".Delay">
+
+        </service>
+
+    </application>
+
+</manifest>

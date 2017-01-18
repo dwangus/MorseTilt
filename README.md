@@ -1,5 +1,7 @@
 # MorseTilt
 
+## For more information: https://devpost.com/software/morse-tilt
+
 ## Installation Instructions
 
 ### Step 1: Prerequisite Note -- first requires installation of the "AutomateIt" application!!! 
@@ -25,3 +27,6 @@ After installing "AutomateIt" and our "MorseTilt", you have to (unfortunately) m
 	- 'App Analytics' under 'Debug and Help Settings'
 3. *Slide 'Rule recommendation frequency' down to 'None' under 'Rule Recommendation'*
 	
+### Step 2: Install .apk onto Android phone
+
+### Step 3: Web-client interface can be found on the "Server" branch of this repository

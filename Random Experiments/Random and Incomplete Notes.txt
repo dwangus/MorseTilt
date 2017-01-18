@@ -1,0 +1,55 @@
+Install AutomateIt app
+
+Then, installing MorseTilt SHOULD be able to store the pre-made .AiR file in Internal Storage -- /AutomateIt/Backups (need to create this folder)
+	--> https://developer.android.com/training/basics/data-storage/files.html#InternalVsExternalStorage
+
+Then, direct the user for manual instructions
+
+(Don't forget to create the rule and save it to the Github after we've created the app!)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"detect change in phone's orientation, not application's change in orientation android"
+"application running in background detecting phone change in orientation android"
+https://developer.android.com/training/run-background-service/index.html
+https://developer.android.com/guide/components/services.html
+http://stackoverflow.com/questions/9029040/how-to-run-an-android-app-in-background
+http://stackoverflow.com/questions/24307412/android-application-as-a-service-without-activity
+http://stackoverflow.com/questions/22915817/check-if-phone-orientation-changed-without-changing-layout
+http://stackoverflow.com/questions/9021890/get-phone-orientation-but-fix-screen-orientation-to-portrait
+http://stackoverflow.com/questions/5112118/how-to-detect-orientation-of-android-device
+
+https://developer.android.com/guide/topics/sensors/sensors_motion.html
+
+
+For the future, rather than just asking them to install it on their own:
+"how to have android app require installation of another app as prerequisite"
+"how to make installation of your app install another android"
+http://stackoverflow.com/questions/3095726/can-an-android-app-install-another-android-app
+
+
+
+
+
+
+
+
+*** http://stackoverflow.com/questions/32199875/launch-activity-by-dialing-a-number ***
+https://www.tutorialspoint.com/android/android_broadcast_receivers.htm
+"simple broadcast receiver android app"
+
+*** http://stackoverflow.com/questions/9092134/broadcast-receiver-within-a-service ***
+
+???
+http://stackoverflow.com/questions/15563921/how-to-detect-incoming-calls-in-an-android-device
