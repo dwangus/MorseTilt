@@ -13,7 +13,7 @@ After installing "AutomateIt" and our "MorseTilt", you have to (unfortunately) m
 - Go into the "AutomateIt" app
 - Go to "Restore Rules"
 - Choose "External storage"
-- Choose "sharedRules____.AiR"
+- Choose "sharedRules____.AiR" *(as of now, we have not yet actually created and uploaded this rule to the repository)*
 - Choose "Replace Existing Rules" (click 'Yes' at the following prompt)
 
 *Furthermore, if you want to minimize the obtrusiveness of the extra installed "AutomateIt" application, do the following:*
